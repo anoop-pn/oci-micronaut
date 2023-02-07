@@ -1,15 +1,30 @@
 plugins {
     id("io.micronaut.application") version "3.6.2"
+    id 'org.checkerframework' version '0.6.20'
 }
 
 group = "micronaut.mushop"
 
 repositories {
     mavenCentral()
+    mavenLocal()
+}
+
+checkerFramework {
+    checkers = [
+            'edu.ucr.cs.riple.taint.ucrtainting.UCRTaintingChecker',
+    ]
+    extraJavacArgs = [
+            '-Awarns',
+            '-AstubDebug'
+    ]
 }
 
 dependencies {
     implementation(project(":app"))
     implementation("io.micronaut:micronaut-http-client")
     implementation("org.junit.jupiter:junit-jupiter-api")
+
+    checkerFramework 'edu.ucr.cs.riple.taint:ucrtainting-checker:0.1'
+    implementation 'edu.ucr.cs.riple.taint:ucrtainting-checker:0.1'
 }
