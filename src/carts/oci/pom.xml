@@ -108,6 +108,8 @@
                 </annotationProcessors>
                 <compilerArgs>
                     <arg>-Awarns</arg>
+                    <arg>-AannotatedPackages=com.test</arg>
+                    <arg>-AenableCustomCheck=true</arg>
                 </compilerArgs>
                 </configuration>
             </plugin>

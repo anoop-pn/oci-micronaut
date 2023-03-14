@@ -17,7 +17,9 @@ checkerFramework {
     ]
     extraJavacArgs = [
             '-Awarns',
-            '-AstubDebug'
+            '-AstubDebug',
+            '-AannotatedPackages=com.test',
+            '-AenableCustomCheck=true'
     ]
 }
 
