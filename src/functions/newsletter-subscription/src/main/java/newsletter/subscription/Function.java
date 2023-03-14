@@ -7,6 +7,7 @@ import jakarta.inject.Singleton;
 
 import java.util.Collections;
 import java.util.Map;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 @Singleton
 public class Function extends OciFunction {
@@ -15,7 +16,7 @@ public class Function extends OciFunction {
     MailSender mailSender;
 
     @ReflectiveAccess
-    public Map<String, String> handleRequest(String toEmail) {
+    public Map<String, String> handleRequest(@RUntainted String toEmail) {
         final String messageID = mailSender.send(
                 toEmail,
                 "Hello from Mushop",

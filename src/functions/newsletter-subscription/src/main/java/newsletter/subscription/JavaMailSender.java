@@ -15,6 +15,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.util.Properties;
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
 
 @Singleton
 public class JavaMailSender implements MailSender {
@@ -30,7 +31,7 @@ public class JavaMailSender implements MailSender {
     }
 
     @Override
-    public String send(String to, String subject, String body) {
+    public String send(@RUntainted String to, String subject, String body) {
         try {
             final Session mailSession = createSession();
             MimeMessage message = new MimeMessage(mailSession);

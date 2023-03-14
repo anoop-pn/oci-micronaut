@@ -22,6 +22,8 @@ import io.micronaut.http.annotation.Post;
 import java.util.Collections;
 import java.util.Map;
 
+import edu.ucr.cs.riple.taint.ucrtainting.qual.RUntainted;
+
 @Controller
 class SubscriptionController {
 
@@ -32,7 +34,7 @@ class SubscriptionController {
     }
 
     @Post("/subscribe")
-    Map<String, String> subscribe(@Body SubscribeRequest subscribeRequest) {
+    Map<String, String> subscribe(@Body @RUntainted SubscribeRequest subscribeRequest) {
         final String messageID = mailSender.send(
                 subscribeRequest.getEmail(),
                 "Hello from Mushop",
